@@ -1,0 +1,40 @@
+﻿@model IEnumerable<sistemarestaurante.Models.Restaurante>
+@section featured{
+    @using (Html.BeginForm("Restaurantes", "Restaurante", FormMethod.Get))
+    {
+        <section>
+            <div class="content-wrapper">
+                <p class="pTitle">@ViewBag.Title</p>
+                <br />
+                <fieldset>
+                    <legend>Filtros</legend>
+                    <ol>
+                            <li>
+                                @Html.LabelFor(m => m.FirstOrDefault().Filtro)
+                                @Html.TextBox("Filtro")
+                            </li>
+                        </ol>
+                    <input type="submit" value="Filtrar" class="ui-button-text-only"  />
+                    @Html.ActionLink("Cadastrar Novo Restaurante", "CadastroRestaurante", "Restaurante", new {@class=".ui-button" })
+                    @*<input type="button" id="btnNovo" value="Cadastrar Novo Restaurante" onclick="@Html.ActionLink("Novo", "CadastroRestaurante", "Restaurante")" />*@
+                </fieldset>
+
+                <table>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>@Html.DisplayNameFor(model => model.nome)</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink("Editar", "CadastroRestaurante", new { id = item.codRestaurante })</td>
+                            <td>@Html.ActionLink("Apagar", "Apagar", new { id = item.codRestaurante })</td>
+                            <td>@Html.DisplayFor(modelItem => item.nome)</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </section>
+    }
+}

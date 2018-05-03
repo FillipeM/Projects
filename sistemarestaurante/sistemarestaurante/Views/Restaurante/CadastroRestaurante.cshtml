@@ -1,0 +1,23 @@
+﻿@model sistemarestaurante.Models.Restaurante
+@section featured
+{
+    @using (Html.BeginForm("CadastroRestaurante", "Restaurante", FormMethod.Post))
+    {
+        <div class="content-wrapper">
+            <p class="pTitle">@ViewBag.Title</p>
+            <fieldset>
+                <legend>Dados</legend>
+                <div>
+                    @Html.HiddenFor(model=> model.codRestaurante)
+                    @Html.LabelFor(model => model.nome)
+                    @Html.EditorFor(model => model.nome)
+                    @Html.ValidationMessageFor(Model=>Model.nome)
+                </div>
+                <p>
+                    <input type="submit" value="Criar" />
+                </p>
+            </fieldset>
+        </div>
+    }
+
+}

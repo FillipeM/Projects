@@ -1,0 +1,50 @@
+﻿@model sistemarestaurante.Models.Prato
+
+@{
+    ViewBag.Title = "Apagar";
+}
+@section featured
+{
+    <h2>Apagar</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>Prato</legend>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Restaurante)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Restaurante)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Nome)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Nome)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Valor)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Valor)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Deleted)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Deleted)
+        </div>
+    </fieldset>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p>
+            <input type="submit" value="Delete" /> |
+             @Html.ActionLink("Back to List", "Index")
+        </p>
+    }
+}

@@ -1,0 +1,42 @@
+﻿@model ICollection<sistemarestaurante.Models.Prato>
+@section featured{
+    <div class="content-wrapper">
+        <p class="pTitle">@ViewBag.Title</p>
+        @Html.ActionLink("Cadastrar Novo Prato", "CadastroPrato", "Prato")
+        @*<input type="button" id="btnNovo" value="Cadastrar Novo Prato" />*@
+
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                        Restaurante
+                    </th>
+                    <th>
+                        Prato
+                    </th>
+                    <th>
+                        Preço
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink("Editar", "CadastroPrato", new {id=item.Codigo})</td>
+                            <td>@Html.ActionLink("Apagar", "Apagar", new {id=item.Codigo})</td>
+                            <td>@Html.DisplayFor(model=>item.Restaurante)</td>
+                            <td>@Html.DisplayFor(model=>item.Nome)</td>
+                            <td>@Html.DisplayFor(model=>item.Valor)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}

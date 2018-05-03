@@ -1,0 +1,22 @@
+﻿@model sistemarestaurante.Models.Prato
+@section featured
+{
+    @using (Html.BeginForm("CadastroPrato", "Prato"))
+    {
+        @Html.AntiForgeryToken()
+        <div class="content-wrapper">
+            <p class="pTitle">@ViewBag.Title</p>
+            <fieldset>
+                <legend>Dados</legend>
+                @Html.HiddenFor(model=> model.Codigo)
+                @Html.LabelFor(model=>model.Restaurante)
+                @Html.EditorFor(model=> model.Restaurante)
+                @Html.LabelFor(Model=>Model.Nome)
+                @Html.EditorFor(Model=>Model.Nome)
+                @Html.LabelFor(Model=> Model.Valor)
+                @Html.EditorFor(Model=> Model.Valor)
+                <input type="submit" id="btnSalvar" value="Salvar" />
+            </fieldset>
+        </div>
+    }
+}

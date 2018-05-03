@@ -1,0 +1,29 @@
+﻿@model sistemarestaurante.Models.Restaurante
+
+@{
+    ViewBag.Title = "Apagar";
+}
+@section featured
+{
+    <h2>Apagar</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>Restaurante</legend>
+        @Html.HiddenFor(model=> model.codRestaurante)
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.nome)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.nome)
+        </div>
+    </fieldset>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p>
+            <input type="submit" value="Delete" /> |
+            @Html.ActionLink("Back to List", "Restaurantes")
+        </p>
+    }
+}
